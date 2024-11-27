@@ -2,8 +2,12 @@ import json
 import random
 from traceback import print_tb
 
-with open('prime_numbers.json', 'r') as f:
-    prime_numbers = json.load(f)
+try:
+  with open('prime_numbers.json', 'r') as f:
+      prime_numbers = json.load(f)
+except:
+  print("prime_numbers.json not found")
+  prime_numbers = [7,13,17]
 
 
 def getRandomPrimeNumber():
