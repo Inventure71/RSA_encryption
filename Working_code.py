@@ -4,9 +4,13 @@ from traceback import print_tb
 
 from test import encrypted_message
 
-# Load prime numbers from JSON
-with open('prime_numbers.json', 'r') as f:
-    prime_numbers = json.load(f)
+try:
+    # Load prime numbers from JSON
+    with open('prime_numbers.json', 'r') as f:
+        prime_numbers = json.load(f)
+except:
+    print("no file found")
+    prime_numbers = []
 
 def getRandomPrimeNumber():
     return prime_numbers[random.randint(0, len(prime_numbers) - 1)]
@@ -58,9 +62,9 @@ letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
 # second_prime_number = getRandomPrimeNumber()
 
 # For testing purposes, using small primes
-first_prime_number = 43  # Example prime
+first_prime_number = 43
 print("First prime number:", first_prime_number)
-second_prime_number = 47  # Example prime
+second_prime_number = 47
 print("Second prime number:", second_prime_number)
 
 n = first_prime_number * second_prime_number
@@ -205,10 +209,8 @@ def decrypt(encrypted_message, private_exponent, n, encrypted_block_size):
     print("\nFinal decrypted message:", message)
     return message
 
-# Example usage
 if __name__ == "__main__":
-    # Example message with spaces
-    message = "FAT BIGGER MONKIE QUE SALTA"
+    message = "THE TRUTH WILL SET YOU FREE BUT FIRST IT WILL MAKE YOU MISERABLE"
 
     # Determine maximum number of letters per block based on n
     max_letters = find_max_letters_per_block(n)
