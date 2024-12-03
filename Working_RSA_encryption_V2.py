@@ -5,7 +5,6 @@ from traceback import print_tb
 from test import encrypted_message
 
 try:
-    # Load prime numbers from JSON
     with open('prime_numbers.json', 'r') as f:
         prime_numbers = json.load(f)
 except:
@@ -57,7 +56,7 @@ def getPublicExponent(eulers_totient_function, coprime=True):
 # Updated letters string to include space
 letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ "
 
-# You can uncomment these lines to use random primes
+# you can uncomment these lines to use random primes
 # first_prime_number = getRandomPrimeNumber()
 # second_prime_number = getRandomPrimeNumber()
 
@@ -100,7 +99,7 @@ def convert_to_numbers(message):
         if letter not in letters:
             raise ValueError(f"Invalid character in message: '{letter}'")
         else:
-            # Pad each character to be 2 numbers, e.g., 01 instead of 1
+            # pad each character to be 2 numbers, e.g., 01 instead of 1
             converted_message += str(letters.index(letter)).zfill(2)
     return int(converted_message)
 
@@ -110,10 +109,9 @@ def decode_ascii_string(numeric_string):
     """
     new_message = ""
     index = 0
-    # Reverse the numeric string
+    # reverse the numeric string
     numeric_string = numeric_string[::-1]
     while index < len(numeric_string):
-        # Extract two digits
         if index + 1 < len(numeric_string):
             first_letter = numeric_string[index + 1]
         else:
@@ -125,7 +123,7 @@ def decode_ascii_string(numeric_string):
             raise ValueError(f"Invalid numeric value for decoding: {num}")
         new_message += letters[num]
         index += 2
-    # Reverse the message to get the correct order
+    # reverse the message to get the correct order
     return new_message[::-1]
 
 def find_max_letters_per_block(n):
